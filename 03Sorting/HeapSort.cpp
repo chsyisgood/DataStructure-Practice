@@ -20,8 +20,8 @@ void makeheap(int x[], int n){
 void heapsort(int x[], int n){
     makeheap(x, n);
     for(int i = n-1; i >= 0; i--){
-        swap(x[0], x[i]);
-        makesubheap(x, 0, i);
+        swap(x[0], x[i]);  // make sure x[i] is the bigest one from x[0] to x[i]
+        makesubheap(x, 0, i);  // makesuheap from x[0] to x[i-1]
     }
 }
 

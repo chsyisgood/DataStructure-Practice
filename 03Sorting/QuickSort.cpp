@@ -5,24 +5,20 @@ void quicksort(int x[], int left, int right) {
     // Complexity: O(n*log n)
     // best case: (n)
     // worse case: (n^2)
-    if (right - left < 1){
+    if (right - left < 1)
         return;
+    int pivot = (x[left] + x[right]) / 2;
+    int i = left, j = right;
+    while (i < j) {        //O(n)
+        while (x[i] <= pivot && i < right)
+            i++;
+        while (x[j] > pivot && j > left)
+            j--;
+        if (i < j)
+            swap(x[i], x[j]);
     }
-    else {
-        int pivot = (x[left] + x[right]) / 2;
-        int i = left, j = right;
-        while (i < j) {        //O(n)
-            while (x[i] <= pivot && i < right)
-                i++;
-            while (x[j] > pivot && j > left)
-                j--;
-            if (i < j) {
-                swap(x[i], x[j]);
-            }
-        }
-        quicksort(x, left, i - 1);  // logn
-        quicksort(x, i, right);
-    }
+    quicksort(x, left, i - 1);  // logn
+    quicksort(x, i, right);
 }
 
 int main(){
