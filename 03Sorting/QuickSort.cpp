@@ -2,6 +2,9 @@
 using namespace std;
 
 void quicksort(int x[], int left, int right) {
+    // Complexity: O(n*log n)
+    // best case: (n)
+    // worse case: (n^2)
     if (right - left < 1){
         return;
     }

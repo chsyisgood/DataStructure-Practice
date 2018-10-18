@@ -26,6 +26,7 @@ void quicksort(int x[], int left, int right) {
 
 void MergeSort(int a[], int b[], int c[]){
     // one time in MergeSort
+    // overall Complexity: O(n*log n)
     int i = 0, j = 0, k = 0;
     while(i < n && j < n){
         if(a[i] < b[j]){

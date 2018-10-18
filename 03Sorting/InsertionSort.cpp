@@ -2,6 +2,9 @@
 using namespace std;
 
 void InsertionSort(int x[], int n){
+    // Complexity: O(n^2)
+    // best case: (n)
+    // worse case: (n^2)
     int temp = 0, j = 0;
     for(int i = 1; i < n; i++){
         temp = x[i];
