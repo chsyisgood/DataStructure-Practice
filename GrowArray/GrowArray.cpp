@@ -62,6 +62,14 @@ public:
         size--;
     }
     void remove4(){
+        int j = 0;
+        for(int i = 0; i < size - 1; i++){
+            if(i % 4 == 1)
+                j++;
+            p[i] = p[i + j];
+        }
+        size-=j;
+        /*
         T* old = p;
         p = new T[capacity];
         int j = 0;
@@ -72,7 +80,7 @@ public:
             }
         }
         delete[] old;
-        size = j;
+        size = j;*/
     }
 
     T get(int i) const{
