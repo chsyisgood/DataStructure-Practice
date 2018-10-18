@@ -2,10 +2,9 @@
 using namespace std;
 
 void InsertionSort(int x[], int n){
-    int temp = 0;
+    int temp = 0, j = 0;
     for(int i = 1; i < n; i++){
         temp = x[i];
-        int j = i - 1;
         for(j = i - 1; j >= 0; j--){
             if(x[j] > temp){
                 x[j+1] = x[j];
@@ -15,7 +14,7 @@ void InsertionSort(int x[], int n){
                 break;
             }
         }
-        x[j+1] = temp;
+        x[j+1] = temp;  //we must set x[j+1](the unchanged slot)=temp, the worst case x[-1 + 1] = x[0] = temp!
     }
 }
 
