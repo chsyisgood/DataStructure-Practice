@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void InsertSort(int x[], int n){
+void InsertionSort(int x[], int n){
     int temp = 0;
     for(int i = 1; i < n; i++){
         temp = x[i];
