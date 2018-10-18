@@ -12,7 +12,6 @@ void makesubheap(int x[], int i, int n){
         swap(x[i], x[largest]);
         makesubheap(x, largest, n);
     }
-
 }
 void makeheap(int x[], int n){
     for(int i = n/2 - 1; i >= 0 ; i--)
