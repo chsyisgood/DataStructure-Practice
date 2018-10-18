@@ -21,7 +21,7 @@ void InsertionSort(int x[], int n){
 
 int main(){
     int a[10] = {7,2,3,6,5,10,4,9,8,1};
-    InsertSort(a, 10);
+    InsertionSort(a, 10);
     for(int i = 0; i < 10; i++)
         cout << a[i] << " ";
     cout << endl;
