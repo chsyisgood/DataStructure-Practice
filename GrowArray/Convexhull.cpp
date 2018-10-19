@@ -7,11 +7,7 @@
 
 using namespace std;
 template <typename T>
-/*
-    Author: Siyu(Max)Chen
-    CWID: 10424481
 
-*/
 class GrowArray {
 private:
     int capacity; // the size of the block of memory
