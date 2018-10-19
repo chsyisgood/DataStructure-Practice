@@ -30,14 +30,13 @@ int binarysearch(int x[], int target, int n){
             cout << "Found!" << endl;
             return mid;
         }
-            
     }
     cout << "Not Found!" << endl;
     return 0;
 }
 
 int main(){
-    int a[10] = {3,2,1,6,10,8,9,5,7,6};
+    int a[] = {3,2,1,6,10,8,9,5,7,6,32,12,456,56,34};
     //int a[10] = {7,2,3,6,5,10,4,9,8,1};
     int n = sizeof(a)/sizeof(a[0]);
     quicksort(a, 0, n-1);

@@ -17,7 +17,7 @@ private:
                 p[i] = old[i];   // copy the values
                 //cout << p[i] <<"=" << old[i] << ' ';
             }
-            delete []old;
+            delete [] old;
         }
     }
 public:

@@ -52,7 +52,7 @@ int main(){
     int b[n] = {7,2,3,6,5};
     quicksort(a, 0, n-1);  // analog that a is sorted
     quicksort(b, 0, n-1);  // analog that b is sorted
-    int* c = new int[2*n];
+    int c[2*n] = {};
     MergeSort(a, b, c);
     for(int i = 0; i < 10; i++)
         cout << c[i] << " ";
