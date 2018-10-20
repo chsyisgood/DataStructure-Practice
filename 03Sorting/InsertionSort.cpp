@@ -17,14 +17,15 @@ void InsertionSort(int x[], int n){
                 break;
             }
         }
-        x[j+1] = temp;  //we must set x[j+1](the unchanged slot)=temp, the worst case x[-1 + 1] = x[0] = temp!
+        x[j+1] = temp;  //we must set x[j+1](the vacant slot)=temp, and the worst case x[-1+1] = x[0] = temp also fits !!!
     }
 }
 
 int main(){
-    int a[10] = {7,2,3,6,5,10,4,9,8,1};
-    InsertionSort(a, 10);
-    for(int i = 0; i < 10; i++)
+    int a[] = {7,2,3,6,5,10,4,9,8,1};
+    int size = sizeof(a)/sizeof(a[0]);
+    InsertionSort(a, size);
+    for(int i = 0; i < size; i++)
         cout << a[i] << " ";
     cout << endl;
 }
