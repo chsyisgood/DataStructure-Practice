@@ -26,7 +26,7 @@ void heapsort(int x[], int n){
 }
 
 int main(){
-    int a[10] = {1,3,4,6,8,9,10,12,2,7};
+    int a[] = {1,3,4,6,8,9,10,12,2,7,23,123,54,765};
     int n = sizeof(a)/sizeof(a[1]);
     heapsort(a, n);
     cout << n << endl;
