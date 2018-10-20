@@ -4,6 +4,7 @@ static bool a[100];// = {};
 static int n = 100;
 
 void era(){
+    // Sieve of Eratosthenes
     for (int i = 2*2; i < n; i+=2){
         a[i] = false;
     }
