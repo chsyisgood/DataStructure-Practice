@@ -94,6 +94,7 @@ public:
 };
 
 void quicksort(double x[], int left, int right) {
+    // you could also use heapsort to solve this problems
     if (right - left < 1){
         return;
     }
