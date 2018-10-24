@@ -192,14 +192,16 @@ public:
              " " << x[array_size - 1] << " " << y[0] << " " <<
              y[array_size - 1] << endl;
             delete[] x; delete[] y;
+            return;
         }
         else if(array_size > 0) {
             cout << index << " th List's minx, maxx, miny, maxy are: " << array.get(0).getX() <<
             " " << array.get(0).getX() << " " << array.get(0).getY() << " " <<
             array.get(0).getY() << endl;
+            return;
         }
         else{
-            ;
+            return;
         }
     }
     void printMinMax(){
@@ -211,6 +213,7 @@ public:
     void printPerimeterClockWiseOrder(){
         cout << "------------Print Perimeter Clockwise Order------------" << endl;
         int n = 0, col = 0, row = 0;
+
         for(; col < size; col++){
             n = col + size * row;
             if(growArray[n].getSize() > 0)
@@ -218,7 +221,6 @@ public:
             else
                 cout << n << " th List is Empty" << endl;
         }
-        
         for(col--,row++; row < size; row++){
             n = col + size * row;
             if(growArray[n].getSize() > 0)
