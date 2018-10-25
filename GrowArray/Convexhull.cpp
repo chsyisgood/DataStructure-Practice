@@ -75,7 +75,6 @@ public:
     friend ostream& operator <<(ostream& s, const GrowArray& b) { //O(n)
         for (int i = 0; i < b.size; i++)
             s << b.p[i] << ' ';
-        //s << endl;
         return s;
     }
 };
@@ -123,7 +122,7 @@ public:
     ConvexHull(int size):size(size){
         growArray = new GrowArray<Point>[size * size];  // create a n * n size grow array
     }
-    void printAllListSizes(){ // Print out the size of each growarray, if NOTHING dont print out!!！
+    void printAllListSizes() const{ // Print out the size of each growarray, if NOTHING dont print out!!！
         cout << "------------Print all lists sizes------------" << endl;
         for(int i = 0; i < size * size ; i++){
             if(growArray[i].getSize()!=0)
@@ -177,7 +176,9 @@ public:
         }
         infile.close();
     }
-    void printminmax(GrowArray<Point> array, int index){
+    void printminmax(GrowArray<Point> &array, int index) const{
+        // update GrowArray<Point> array to GrowArray<Point> &array, the former one might cause crash!
+        // Still dont know why ?
         int array_size = array.getSize();
         if(array_size > 1){
             double* x = new double[array_size];
@@ -186,8 +187,8 @@ public:
                 x[j] = array.get(j).getX();
                 y[j] = array.get(j).getY();
             }
-            quicksort(x,0,array_size - 1);
-            quicksort(y,0,array_size - 1);
+            quicksort(x, 0, array_size - 1);
+            quicksort(y, 0, array_size - 1);
             cout << index << " th List's minx, maxx, miny, maxy are: " << x[0] <<
              " " << x[array_size - 1] << " " << y[0] << " " <<
              y[array_size - 1] << endl;
@@ -204,16 +205,15 @@ public:
             return;
         }
     }
-    void printMinMax(){
+    void printMinMax() const{
         cout << "------------Print Min and Max------------" << endl;
         for(int i = 0; i < size * size ; i++)
             printminmax(growArray[i], i);
         cout << "Another Lists are Empty" << endl;
     }
-    void printPerimeterClockWiseOrder(){
+    void printPerimeterClockWiseOrder() const{
         cout << "------------Print Perimeter Clockwise Order------------" << endl;
         int n = 0, col = 0, row = 0;
-
         for(; col < size; col++){
             n = col + size * row;
             if(growArray[n].getSize() > 0)
