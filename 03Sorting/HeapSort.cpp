@@ -18,7 +18,6 @@ void heapsort(int x[], int n){
     // make the initial heap
     for(int i = n/2 - 1; i >= 0 ; i--)
         makesubheap(x, i, n);
-    
     for(int i = n-1; i >= 0; i--){
         swap(x[0], x[i]);  // make sure x[i] is the bigest one from x[0] to x[i]
         makesubheap(x, 0, i);  // makesuheap from x[0] to x[i-1]
