@@ -7,82 +7,8 @@ using namespace std;
  * Title: Linked List class
  * Comment: Used class LinkedList2 and class GrowArray to complete some functions
  * 1. Use LinkedList2 to remove 3-divisible indices and its relevant member in the list, repeated 2 times
- * 2. Use GrowArray to catch some Instructions and carry out them
  */
-template <typename T>
-class GrowArray {
-private:
-    int capacity; // the size of the block of memory
-    int size;     // how many are used
-    T* p;       // pointer to the block
-    void checkGrow() { //
-        if(size + 1 > capacity){   // size 不变，但是capacity变成两倍
-            capacity =  capacity * 2;
-            T* old = p;
-            p = new T[capacity];
-            for(int i = 0; i < size; i++){
-                p[i] = old[i];   // copy the values
-                //cout << p[i] <<"=" << old[i] << ' ';
-            }
-            delete []old;
-        }
-    }
-public:
-    GrowArray(int initialSize = 100) {          //  新建
-        p = new T[initialSize];
-        size = 0;
-        capacity = initialSize;
-        p[0] = 0;
-    }
-    ~GrowArray(){
-        delete[] p;
-    }
-    void insertEnd(T v) { //O(1)
-        checkGrow();
-        p[size++] = v;
-    }
-    void insertStart(T v) {
-        checkGrow();
-        for(int i = size; i > 0; i--){
-            p[i] = p[i-1];
-        }
-        p[0] = v;
-        size++;
-    }
-    void insert(int pos, T v) {
-        checkGrow();
-        // 0 到 pos-1 部分不变化, pos 到 size -1 部分 高项目 = 低项目
-        for(int i = size ; i > pos; i--){
-            p[i] = p[i-1];
-        }
-        p[pos] = v;
-        size++;
-    }
-    void removeStart(int num = 1) {
-        for (int i = 0; i < size - num; i++)
-            p[i] = p[i + num];
-        size -= num;
-    }
-    void removeEnd(int num = 1) {
-        size -= num;
-    }
-    T get(int i) const{
-        return p[i];
-    }
-    int getSize()const{
-        return this->size;
-    }
-    int getCap()const{
-        return this->capacity;
-    }
 
-    friend ostream& operator <<(ostream& s, const GrowArray& b) {
-        for (int i = 0; i < b.size; i++)
-            s << b.p[i] << ' ';
-        //s << endl;
-        return s;
-    }
-};
 template <typename T>
 class LinkedList2{
 private:
@@ -218,24 +144,6 @@ public:
     }
 };
 
-void GetStringInt(int a[], string s){
-    // extract the integers from String like 1:2:10 -> 1, 2, 10
-    int start = 0; int count = 0;  int num = 0;  // get the start position
-    for(int i = 0; i < s.length()-1; i++){
-        if(s[i] ==':'){
-            string c = s.substr(start,count);
-            count = 0;
-            a[num] = atoi(c.c_str());
-            start = i + 1;
-            num++;
-        }
-        else
-            count++;
-    }
-    string c = s.substr(start,++count);
-    a[num] = atoi(c.c_str());
-}
-
 int main() {
     LinkedList2<int> list;
     int num = list.read("linkedlist.dat");
@@ -252,43 +160,5 @@ int main() {
     list.reverse();
     cout << "Reverse the linked list: " << endl;
     cout << list <<endl;
-    cout << "-----------------Grow Array Instructions Part-----------------" << endl;
-    GrowArray<int> array;
-    string input;
-    cout << "Please print in CORRECT INSTRCUTIONS: " << endl;
-    while(true){
-        cin >> input;
-        if(input == "ADD_FRONT"){
-            cin >> input;
-            int* a = new int[3];
-            GetStringInt(a,input);
-            for(int i = a[0]; i <= a[2]; i += a[1]){
-                array.insertStart(i);
-            }
-        }
-        else if(input == "ADD_BACK"){
-            cin >> input;
-            int* a = new int[3];
-            GetStringInt(a,input);
-            for(int i = a[0]; i <= a[2]; i += a[1]){
-                array.insertEnd(i);
-            }
-        }
-        else if(input == "REMOVE_FRONT"){
-            cin >> input;
-            int a = atoi(input.c_str());
-            array.removeStart(a);
-        }
-        else if(input == "REMOVE_BACK"){
-            cin >> input;
-            int a = atoi(input.c_str());
-            array.removeEnd(a);
-        }
-        else if(input == "OUTPUT"){
-            cout << array << endl;
-        }
-        else
-            cout << "Wrong Input!!!!" << endl;
-    }
     return 0;
 }
