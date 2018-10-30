@@ -32,7 +32,7 @@ public:
 
 int main(){
     Solution a;
-    cout << a.myPow(2.00, 10) << '\n';
-    cout << a.myPow(0.0001, INT32_MAX) << '\n';
-    cout << a.myPow(2.00, INT32_MIN) << '\n';
+    cout << a.reverse(145633) << '\n';
+    cout << a.reverse(INT32_MAX) << '\n';
+    cout << a.reverse(INT32_MIN) << '\n';
 }
