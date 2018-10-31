@@ -5,7 +5,7 @@
 using namespace std;
 
 /*
-  学习：
+  学习：Onenote\\C++\\Map
   1. 学习了C++中map,hashmap,unordered map的简单使用， include# <map><hashp_map><unordered_map>
   2. 使用map的简单遍历和查找，复杂度更低 O(1)
   3. 这里的 Map.count(...) > 0 也可以使用 Map.find(...) != Map.end(), 两者效果类似，后者应该会好一点
@@ -33,9 +33,9 @@ public:
 };
 
 int main(){
-    Solution a;
+    Solution sol;
     vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int target = 12;
-    vector<int> ans = a.twoSum(nums, target);
+    vector<int> ans = sol.twoSum(nums, target);
     cout << ans[0] << ' ' << ans[1] << endl;
 }
