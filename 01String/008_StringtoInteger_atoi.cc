@@ -1,7 +1,17 @@
 #include <iostream>
 using namespace std;
 
-int x = [](){ std::ios_base::sync_with_stdio(false); std::cin.tie(nullptr); return 0; }();
+/*
+  学习：
+  1. string相关 Onenote\\C++\\String
+  2. 如何使用 string 的 iterator
+
+  算法：
+  1. 逻辑：先循环一遍，当字符串指向都为' '时运行，直到第一个非空格字符；判断第一个是数字或+-？；循环计算ans，如果超出边界return
+  2. 重点：先遍历所有空格，第一个非空格字符关键判断是三种中的哪种，剩下的很easy
+*/
+
+static const auto speedup =[]() {std::ios::sync_with_stdio(false); std::cin.tie(NULL); return 0;}();
 class Solution {
 public:
     int myAtoi(string str) {
