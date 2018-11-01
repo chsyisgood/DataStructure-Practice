@@ -12,7 +12,7 @@ using namespace std;
   4. Map.at(...) = Map[...] , at会做下标检查，没有则报错；后者没有返回空值
 
   算法：
-  1. 逻辑：显然需要在原有的map中先查找 remnant， 然后再插入新的值 
+  1. 【逻辑顺序】：在原有的map中先查找 remnant， 然后再插入新的值 
   2. brute force 很容易写，是一个两层嵌套循环，复杂度很高
 
   Q：
