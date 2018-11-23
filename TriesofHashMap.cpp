@@ -9,9 +9,10 @@ using namespace std;
 #define PRIMEB 895932
 #define SEED 97
 #define CAPACITY 26*26
+#define INITIALSIZE 2000
 
 /*
- *  Author: Siyu (xxx) Chen
+ *  Author: Siyu (XX) Chen
  *  CWID: XXX
  *  Complete HashMap using linear chaining
  *  Cite: I copied a hash function from online website, thanks a lot for people's sharing !!!
@@ -48,7 +49,7 @@ public:
     }
 
     // Constructor of class HashMap
-    HashMap(uint32_t size = 5000, bool isInitialized = false):isInitialized(isInitialized),size((isInitialized)? size: 0), used(0){
+    HashMap(uint32_t size = INITIALSIZE, bool isInitialized = false):isInitialized(isInitialized),size((isInitialized)? size: 0), used(0){
         Lists = * new vector<HashMapNode*>(size);
     }
     // Destructor of class HashMap
@@ -105,7 +106,7 @@ int getIndex(char a, char b){
 
 // Calculate the collisions and print out
 void printHist(HashMap* Map){
-    int arr[60] = {0}; int initializedNum = 0;
+    uint32_t arr[52] = {0}; int initializedNum = 0; uint32_t testSize = 0;
     for(int j = 0; j < CAPACITY; ++j){
         // if Map[j] is not Initialized, its size will be zero, which means we dont need to check!!!
         if(!Map[j].isInitialized)
@@ -115,16 +116,20 @@ void printHist(HashMap* Map){
             int len = 0; HashMap::HashMapNode* temp = Map[j].Lists[i];
             while(temp != nullptr){
                 ++len;
+                ++testSize;
                 temp = temp->nextNode;
             }
             arr[len]++;
         }
     }
+    cout << "Num of ALL read words in the MAP(Should be equal to words in dict) : " << testSize << endl;
     cout << "Num of ALL index : " << CAPACITY << endl;
     cout << "Num of INITIALIZED index : " << initializedNum << endl;
     cout << "Num of NOT initialized index : " << CAPACITY - initializedNum << endl;
-    for(int i = 0; i <= 50; i++)
-        cout << "Numbers of bins with " << i << " collisions : " << arr[i] << endl;
+    // 0 Collision means there is only one element in a bin-list, 1 collision means there are two here,
+    // if one bin contains nothing, we should ignore it!
+    for(int i = 1; i <= 50; i++)
+        cout << "Numbers of bins with " << i - 1 << " collisions : " << arr[i] << endl;
 }
 
 int main() {
@@ -140,9 +145,9 @@ int main() {
         getline(dictFile, line);
         if(line != ""){
             int index = getIndex(line[0],line[1]); int len = line.length();
-            // if the Map[index] is not Initialized, then we initialized it and set size as 5000
+            // if the Map[index] is not Initialized, then we initialized it and set size as 2000
             if(!Map[index].isInitialized)
-                Map[index] = * new HashMap(5000, true);
+                Map[index] = * new HashMap(INITIALSIZE, true);
             // if the length of word is less or equal to 2, then put "" to the HashMap
             string postfix = (len < 3)? "": line.substr(2,len - 1);
             Map[index].add(postfix);
