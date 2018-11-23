@@ -11,8 +11,8 @@ using namespace std;
 #define CAPACITY 26*26
 
 /*
- *  Author: Siyu (Max) Chen
- *  CWID: 10424481
+ *  Author: Siyu (xxx) Chen
+ *  CWID: XXX
  *  Complete HashMap using linear chaining
  *  Cite: I copied a hash function from online website, thanks a lot for people's sharing !!!
  */
